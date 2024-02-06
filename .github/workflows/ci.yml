@@ -22,18 +22,15 @@ jobs:
         with:
          node-version: '15'
 
-      - name: Install Dependencies
+      - name: Install Dependencies run lint, pretier test and build
         working-directory: ./codebase/rdicidr-0.1.0
-        run: npm install
-      - name: Lint
-        working-directory: ./codebase/rdicidr-0.1.0
-        run: npm run lint
-      - name: Prettier
-        run: npm run prettier
-      - name: Test
-        run: CI= true npn run test
-      - name: build
-        run: npm run build
+        run: | 
+          npm install
+          npm run lint
+          npm run prettier
+          ci= true npn run test
+          npm run build
+      
 
   deploy:
     runs-on: ubuntu-latest
