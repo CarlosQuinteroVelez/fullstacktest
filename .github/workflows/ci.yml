@@ -5,7 +5,7 @@ on:
     branches:
       - testdevops
 
-jobs:
+  jobs:
   build:
     runs-on: ubuntu-latest
   steps:
@@ -14,10 +14,10 @@ jobs:
       with:
         ref: testdevops
 
-   - name: Setup Node.js
-     uses: actions/set-upnode@v3
-     with:
-      node-version: '14'
+    - name: Setup Node.js
+      uses: actions/set-upnode@v3
+      with:
+       node-version: '14'
 
    - name: Install Dependencies
      run: npm install
