@@ -24,7 +24,6 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd assessment-cc-devops-kubernetes-sr-01
           cd codebase
           cd rdicidr-0.1.0
           npm install
