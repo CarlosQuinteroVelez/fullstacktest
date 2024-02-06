@@ -17,33 +17,33 @@ jobs:
         with:
         ref: testdevops
 
-    - name: Setup Node.js
-      uses: actions/set-upnode@v3
-      with:
-       node-version: '14'
+      - name: Setup Node.js
+        uses: actions/set-upnode@v3
+        with:
+         node-version: '14'
 
-    - name: Install Dependencies
-      run: npm install
-    - name: Lint
-      run: npm run lint
-    - name: Prettier
-      run: npm run prettier
-    - name: Test
-      run: CI= true npn run test
-    - name: build
-      run: npm run build
+      - name: Install Dependencies
+        run: npm install
+      - name: Lint
+        run: npm run lint
+      - name: Prettier
+        run: npm run prettier
+      - name: Test
+        run: CI= true npn run test
+      - name: build
+        run: npm run build
 
-ploy:
-runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-latest
 
-needs: build
+    needs: build
 
-steps:
-- name: Apply Kubernetes Secret
-  run: kubectl apply -f k8/secret.yml
-- name: Apply Kubernetes Service
-  run: kubectl apply -f k8/secret.yml
-- name: Apply Kubernetes Deployment
-  run: kubectl apply -f k8/secret.yml
-- name: Apply Kubernetes Ingress
-  run: kubectl apply -f k8/secret.yml
+    steps:
+    - name: Apply Kubernetes Secret
+      run: kubectl apply -f k8/secret.yml
+    - name: Apply Kubernetes Service
+      run: kubectl apply -f k8/service.yml
+    - name: Apply Kubernetes Deployment
+      run: kubectl apply -f k8/deployment.yml
+    - name: Apply Kubernetes Ingress
+      run: kubectl apply -f k8/ingress.yml
