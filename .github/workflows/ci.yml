@@ -9,27 +9,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
   steps:
-  - name: Checkout Repository
-    uses: actions/checkout@v2
-    with:
-      ref: testdevops
+   - name: Checkout Repository
+     uses: actions/checkout@v2
+     with:
+       ref: testdevops
 
-  - name: Setup Node.js
-    uses: actions/set-upnode@v3
-    with:
-     node-version:14
+   - name: Setup Node.js
+     uses: actions/set-upnode@v3
+     with:
+      node-version:14
 
-  - name: Install Dependencies
-    run: npm install
-  - name: Lint
-    run: npm run lint
-  - name: Prettier
-    run: npm run prettier
-  - name: Test
-    run: CI= true npn run test
+   - name: Install Dependencies
+     run: npm install
+   - name: Lint
+     run: npm run lint
+   - name: Prettier
+     run: npm run prettier
+   - name: Test
+     run: CI= true npn run test
 
-  - name: build
-    run: npm run build
+   - name: build
+     run: npm run build
 
 deploy:
   runs-on: ubuntu-latest
