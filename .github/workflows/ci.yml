@@ -1,9 +1,9 @@
 name: CI
 
 on:
-  pull_request:
+  push:
     branches:
-      -'*'
+      -testdevops
 
 jobs:
   build:
@@ -11,6 +11,8 @@ jobs:
   steps:
   - name: Checkout Repository
     uses: actions/checkout@v2
+    with:
+      ref: testdevops
 
   - name: Setup Node.js
     uses: actions/set-upnode@v3
